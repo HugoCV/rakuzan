@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './books/store';
+import Books from './books/books';
 
-function App() {
+import { ThemeProvider } from './themes/context';
+import ThemeSwitcher from './themes/themeSwitcher';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Provider store={store}>
+        <Books />
+      </Provider>
+      <div>
+        <h1>My Awesome App</h1>
+        <ThemeSwitcher />
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
